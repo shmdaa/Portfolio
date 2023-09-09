@@ -1,0 +1,134 @@
+#title {
+    background-color: #7347da;
+}
+
+.container-fluid {
+    padding: 3% 15%;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height:1.5;
+    color: #ffff;
+} 
+ 
+h2 {
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 1.5;
+    color: #ffff;
+}
+
+h3 {
+    font-family:'Raleway';
+    font-weight: bold;
+}
+
+p {
+    color: #8f8f8f;
+}
+
+.navbar {
+    padding: 0 0 4.5rem;
+}
+.navbar-brand{
+    font-family: 'Ubuntu';
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.nav-item {
+    padding: 0 18px;
+}
+.download-button {
+    margin: 5% 3% 5% 0;
+}
+.title-image{
+    width: 60%;
+    transform: rotate(20deg);
+}
+
+#features {
+    padding: 7% 15%;
+    background-color: #ffff;
+}
+.feature-box {
+    text-align: center;
+    padding: 5%;
+}
+.icon{
+    color: #ef129e;
+    margin-bottom: 1rem;
+}
+
+.icon:hover{
+     color:#7347da;
+}
+
+#testimonials {
+    text-align: center;
+    background-color: #7347da;
+}
+
+.carousel-item {
+    padding: 7% 15%; 
+}
+
+.testimonial-image {
+    width: 10%;
+    border-radius: 50%;
+    margin: 10px;
+}
+#press {
+    background-color: #7347da;
+    text-align: center;
+}
+.press-logo {
+    width: 10%;
+    margin: 20px 20px 50px;
+}
+
+#pricing {
+    padding:100px;
+    text-align: center
+}
+.pricing-header {
+    color: #000;
+}
+
+.pricing-column {
+    padding: 3% 2%;
+} 
+
+#cta{
+    background-color: #7347da;
+    color: #ffff;
+    padding: 7% 15%;
+    text-align: center;
+}
+.cta-heading{
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 3.5rem;
+    line-height:1.5;
+}
+
+#footer {
+    padding: 7% 15%;
+    text-align: center;
+}
+
+.social-icon {
+    margin: 20px 10px;
+}
+
+@media (max-width: 1028px){
+    #title {
+        text-align: center;
+    }
+    .title-image{
+        position: static;
+        transform: rotate(0)
+    }
+}
