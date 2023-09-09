@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>COGS3 - Best of 10!</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    .dice {
+      display: inline-block;
+      margin: 10px;
+      animation-name: rollDice;
+      animation-duration: var(--dice-animation-duration, 1s); 
+      animation-timing-function: var(--dice-animation-timing, ease);
+    }
+    .balance {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    @keyframes rollDice {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>
+    let balance = 0;
+
+    async function letsPlay() {
+      const numGames = parseInt(document.getElementById('numGames').value);
+
+      // Reset balance to 0
+      balance = 0;
+
+      const diceAnimationDuration = '1s'; 
+      const diceAnimationTiming = 'linear'; 
+      document.documentElement.style.setProperty('--dice-animation-duration', diceAnimationDuration);
+      document.documentElement.style.setProperty('--dice-animation-timing', diceAnimationTiming);
+
+      for (let game = 0; game < numGames; game++) {
+        // Roll the dice
+        const dice1 = Math.floor(Math.random() * 6) + 1;
+        const dice2 = Math.floor(Math.random() * 6) + 1;
+        const sum = dice1 + dice2;
+
+        // Determine the outcome of the game
+        if (sum > 9) {
+          balance += 5; // You win $5
+        } else if (sum <= 5) {
+          balance -= 5; // You lose $5
+        }
+
+        // Display the rolled dice images
+        const diceImage1 = document.querySelector('.img1');
+        const diceImage2 = document.querySelector('.img2');
+        diceImage1.src = `images/dice${dice1}.png`;
+        diceImage2.src = `images/dice${dice2}.png`;
+
+        // Wait for a moment before rolling the dice again
+        await sleep(1000); 
+      }
+
+      document.getElementById('balance').textContent = balance;
+
+      // Display the result
+      const resultElement = document.querySelector('h3');
+      resultElement.textContent = `After ${numGames} games, your balance is $${balance}`;
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Reports the values of the die and the sum -->
+    <h1>Let's Roll the Dice!</h1>
+
+    <!-- Reports the outcome of the bet -->
+    <h2>
+      If the dice add to anything above 9, you win $5! <br>
+      If the dice add to 5 or less, I win $5. <br>
+      Ready to play?
+    </h2>
+
+    <!-- User input for number of games -->
+    <label for="numGames">Enter the number of games you want to play:</label>
+    <input type="number" id="numGames" class="form-control mb-3" min="1">
+
+    <!-- Balance display -->
+    <div class="balance">
+      Balance: $<span id="balance">0</span>
+    </div>
+
+    <!-- Button to play the game -->
+    <button class="myBtn btn btn-primary mt-3" onclick="letsPlay()">Let's Play!</button>
+
+    <!-- JS will input the content -->
+    <h3></h3>
+
+    <!-- Dice images -->
+    <div class="dice">
+      <img class="img1" src="images/dice6.png">
+    </div>
+
+    <div class="dice">
+      <img class="img2" src="images/dice6.png">
+    </div>
+  </div>
+
+  <footer class="text-center mt-5">
+    COGS3 - Dice Game Bet 10 - Juri Dojun - 9/3/2023
+  </footer>
+
+  <script src="index.js" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
